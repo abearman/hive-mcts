@@ -1,3 +1,5 @@
+include("Player.jl")
+
 ####################################
 #          Token class
 ####################################
@@ -9,12 +11,17 @@ function getNeighborPositions(token::Token)
   return [(n,m-1), (n-1,m), (n-1,m+1), (n,m+1), (n+1,m), (n+1,m-1)]
 end
 
+function getPlayer(token::Token)
+  return token.player
+end
+
 ####################################
 #          Queen Bee class
 ####################################
 type QueenBee <: Token
   position::Tuple{Int, Int}
   placed::Bool
+  player::Player
 end
 
 function isSurrounded(bee::QueenBee)
@@ -27,6 +34,7 @@ end
 type Beetle <: Token
   position::Tuple{Int, Int}
   placed::Bool
+  player::Player
 end
 
 # A beetle is always free to move, even
@@ -42,6 +50,7 @@ end
 type Grasshopper <: Token
   position::Tuple{Int, Int}
   placed::Bool
+  player::Player
 end
 
 ####################################
@@ -50,6 +59,7 @@ end
 type Spider <: Token
   position::Tuple{Int, Int}
   placed::Bool
+  player::Player
 end
 
 ####################################
@@ -58,4 +68,5 @@ end
 type Ant <: Token
   position::Tuple{Int, Int}
   placed::Bool
+  player::Player
 end
